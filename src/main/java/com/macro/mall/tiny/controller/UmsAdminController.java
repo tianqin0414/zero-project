@@ -4,6 +4,7 @@ import com.macro.mall.tiny.common.api.CommonPage;
 import com.macro.mall.tiny.common.api.CommonResult;
 import com.macro.mall.tiny.mbg.model.PmsBrand;
 import com.macro.mall.tiny.service.PmsBrandService;
+import com.macro.mall.tiny.service.UmsAdminService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -21,21 +22,22 @@ import java.util.List;
  * 品牌管理Controller
  * Created by macro on 2019/4/19.
  */
-@Api(tags = "UmsAdminController", description = "商品品牌管理aa")
+@Api(tags = "UmsAdminController", description = "Admin管理")
 @Controller
-@RequestMapping("v1/abrand")
+@RequestMapping("v1/admin")
 public class UmsAdminController {
     @Autowired
     private PmsBrandService brandService;
+    private UmsAdminService adminService;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PmsBrandController.class);
 
 
-    @ApiOperation("aa删除指定id的品牌")
-    @RequestMapping(value = "/adelete/{id}", method = RequestMethod.GET)
+    @ApiOperation("删除指定id的Admin")
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult deleteBrand(@PathVariable("id") Long id) {
-        int count = brandService.deleteBrand(id);
+        int count = adminService.deleteAdmin(id);
         if (count == 1) {
             LOGGER.debug("deleteBrand success :id={}", id);
             return CommonResult.success(null);
