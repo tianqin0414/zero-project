@@ -27,7 +27,6 @@ import java.util.List;
 @RequestMapping("v1/admin")
 public class UmsAdminController {
     @Autowired
-    private PmsBrandService brandService;
     private UmsAdminService adminService;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PmsBrandController.class);
